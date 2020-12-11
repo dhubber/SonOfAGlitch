@@ -1,4 +1,4 @@
-extends CollisionShape2D
+extends Area2D
 
 
 # Declare member variables here. Examples:
@@ -15,3 +15,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func OnEnterGlitch(body_id, body, body_shape, area_shape):
+	print("Enter" + body.name)
+
+
+func OnExitGlitch(body_id, body, body_shape, area_shape):
+	print("Exit" + body.name)
