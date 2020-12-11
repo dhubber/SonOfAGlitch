@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 
-export var walk_speed = 1.0 
+export var walk_speed = 200.0 
 
 
 # Called when the node enters the scene tree for the first time.
@@ -12,5 +12,6 @@ func _ready():
 func move_direction(direction):
 	var destination = global_position + 100 * direction
 	var velocity = direction * walk_speed
+	print("velocity : ", velocity)
 	look_at(destination)
 	move_and_slide(velocity)
