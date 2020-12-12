@@ -32,6 +32,10 @@ func toggle_pipes():
 	else:
 		pipes_tilemap.hide()	
 
+func toggle_map():
+	#TODO
+	pass
+
 #Check for movement input
 func get_movedir():
 	var LEFT = Input.is_action_pressed("move_left")
@@ -51,6 +55,10 @@ func _process(delta):
 	# Check if pipes were toggled
 	if Input.is_action_just_pressed("toggle_pipes"):
 		toggle_pipes()
+	
+	#Check if map was toggled
+	if Input.is_action_just_pressed("toggle_map"):
+		toggle_map()
 		
 	# MOVEMENT
 	if in_pipes:
