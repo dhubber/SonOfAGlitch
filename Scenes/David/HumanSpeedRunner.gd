@@ -1,15 +1,13 @@
 extends "res://Scenes/David/SpeedRunnerBase.gd"
 
 
-var direction : Vector2 = Vector2()
-
-
 func _physics_process(delta):
-	update_player_input()
-	move_direction(direction)
+	player_input()
+	move_direction()
+	animate()
 
 
-func update_player_input():
+func player_input():
 	direction = Vector2()
 	
 	# Up/down movement
@@ -26,4 +24,3 @@ func update_player_input():
 
 	if direction.length_squared() > 0:
 		direction = direction.normalized()
-#	print("Direction : ", direction)
