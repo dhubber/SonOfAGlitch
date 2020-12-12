@@ -21,10 +21,10 @@ func _ready():
 
 
 #UnityMasterrace
-func _process(delta): Update()
+func _process(delta): Update(delta)
 
 
-func Update():
+func Update(delta):
 	
 #	Display timing
 	if !activeTimer.is_stopped():
