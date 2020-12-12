@@ -6,7 +6,7 @@ onready var navigation2d : Navigation2D = get_tree().get_root().find_node("Navig
 onready var level = get_parent()
 
 var current_destination = Vector2()
-
+var assigned_task = null
 var path = []
 
 
@@ -24,9 +24,14 @@ func _physics_process(delta):
 func find_next_task():
 	if level != null:
 		if level.has_method("find_random_task"):
-			path = level.find_random_task(position)
-			if path != null:
-				print("Found path : ",path)
+			assigned_task = level.find_random_task()
+			if assigned_task != null:
+				assigned_task.set_assigned_runner(self)
+				path = level.find_path_to_destination(position, assigned_task.position)
+				if path != null:
+					print("Found path : ",path)
+			else:
+				$TaskWaitTimer.start()
 
 
 func navigate_to_destination():
@@ -41,6 +46,7 @@ func navigate_to_destination():
 
 
 func task_complete():
+	assigned_task = null
 	$TaskWaitTimer.start()
 
 

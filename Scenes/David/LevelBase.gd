@@ -3,6 +3,7 @@ extends Node2D
 onready var navigation2d : Navigation2D = $Navigation2D
 
 var tasks = []
+var assigned_tasks = []
 
 
 func _ready():
@@ -13,13 +14,15 @@ func _ready():
 	print("Found ",tasks.size()," in level")
 
 
-func find_random_task(current_position):
+func find_random_task():
 	if tasks.size() > 0:
 		var index = randi() % tasks.size()
 		var task = tasks[index]
-		return find_path_to_destination(current_position, task.position)
+		tasks.remove(index)
+		assigned_tasks.push_back(task)
+		return task
 	else:
-		return PoolVector2Array()
+		return null
 
 
 func find_path_to_destination(current_position, destination):
@@ -32,11 +35,23 @@ func find_path_to_destination(current_position, destination):
 
 
 func task_completed(task):
-	var index = tasks.find(task)
+	var index = assigned_tasks.find(task)
 	if index != -1:
-		tasks.remove(index)
-		print("Number of remaining tasks : ", tasks.size())
-		if tasks.size() == 0:
-			print("SpeedRun complete!")
+		assigned_tasks.remove(index)
+		print("Number of remaining tasks : ", tasks.size() + assigned_tasks.size())
+		if tasks.size() + assigned_tasks.size() == 0:
+			all_tasks_completed()
 		else:
 			pass
+
+
+func task_abandoned(task):
+	var index = assigned_tasks.find(task)
+	if index != -1:
+		assigned_tasks.remove(index)
+		tasks.push_back(task)
+		task.set_assigned_runner(null)
+
+
+func all_tasks_completed():
+	print("SpeedRun complete!")

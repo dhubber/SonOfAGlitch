@@ -23,6 +23,9 @@ func is_assigned():
 
 func _on_TaskBase_body_entered(body):
 	print("Body entered task!")
+	if body != assigned_runner:
+		return
+		
 	if body.is_in_group("SpeedRunner"):
 		if body.has_method("task_complete"):
 			body.task_complete()
