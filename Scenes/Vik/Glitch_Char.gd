@@ -7,6 +7,8 @@ var last_position = Vector2()
 var target_position = Vector2()
 var movedir = Vector2()
 
+var interaction_area
+
 # TILEMAP
 var pipes_tilemap
 var in_pipes 
@@ -23,8 +25,11 @@ func _ready():
 	pipes_tilemap = get_node("../PipesTM")
 	print(pipes_tilemap.name)
 	in_pipes = true;	
-	map_ui = get_node("../HUD/Map")
-	map_ui.visible = false
+	#map_ui = get_node("../HUD/Map")
+	#map_ui.visible = false
+	
+	interaction_area = get_node("InteractArea")
+	interaction_area.connect("body_entered", self, "glitch_entered")
 
 # Toggle pipes visibility
 func toggle_pipes():
@@ -89,3 +94,5 @@ func _process(delta):
 				movedir = Vector2.ZERO
 	
 
+func glitch_entered():
+	print("Hello")
