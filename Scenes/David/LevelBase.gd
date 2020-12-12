@@ -55,3 +55,8 @@ func task_abandoned(task):
 
 func all_tasks_completed():
 	print("SpeedRun complete!")
+	$LevelChangeTimer.start()
+
+
+func game_over():
+	get_tree().change_scene("res://Scenes/Main/MainMenu.tscn")
