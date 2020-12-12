@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/Seb/Glitch System/Bases/Glitch Area Base.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Seb/Glitch System/Bases/Glitch Base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Seb/Glitch System/Bases/Glitch Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Seb/Glitch System/Bases/Glitch Area Base.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/David/HumanSpeedRunner.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Glitch Splash Base" parent="." instance=ExtResource( 1 )]
+[node name="Glitch Splash Base" parent="." instance=ExtResource( 2 )]
 position = Vector2( 63.3701, 54.2356 )
 scale = Vector2( 1.92277, 1.92277 )
 activeTime = 2.0
 
-[node name="Glitch Base" parent="." instance=ExtResource( 2 )]
+[node name="Glitch Base" parent="." instance=ExtResource( 1 )]
 position = Vector2( 263.641, 88.7041 )
 scale = Vector2( 1.92277, 1.92277 )
 

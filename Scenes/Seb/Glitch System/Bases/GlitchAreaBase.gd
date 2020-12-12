@@ -4,10 +4,10 @@ extends "res://Scenes/Seb/Glitch System/Bases/GlitchBase.gd"
 var affectedRunners = []
 var inrangeRunners = []
 
-func OnSelectGlitch(body): .OnSelectGlitch(body)
+func OnSelectGlitch(body, things, boring, whatever): .OnSelectGlitch(body, things, boring, whatever)
 	
 	
-func OnDeselectGlitch(body): .OnDeselectGlitch(body)
+func OnDeselectGlitch(body, things, boring, whatever): .OnDeselectGlitch(body, things, boring, whatever)
 
 func OnActivateGlitch():
 	if glitchActive: return

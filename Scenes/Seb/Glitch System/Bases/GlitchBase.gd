@@ -36,11 +36,11 @@ func Update():
 		OnActivateGlitch()
 
 #Indicates the player is at the glitch location, priming the glitch for execution
-func OnSelectGlitch(body):
+func OnSelectGlitch(body, things, boring, whatever):
 	glitchSelect = true
 	print("Entered glitch" + name)
 	
-func OnDeselectGlitch(body): 
+func OnDeselectGlitch(body, things, boring, whatever): 
 	glitchSelect = false
 	print("Left glitch" + name)
 	
