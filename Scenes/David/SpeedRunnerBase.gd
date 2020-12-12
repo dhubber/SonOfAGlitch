@@ -31,3 +31,7 @@ func animate():
 			animatedSprite.flip_h = false
 	else:
 		animatedSprite.play("idle")
+
+
+func task_complete():
+	pass
