@@ -7,7 +7,7 @@ vertices = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
-points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
+points = PoolVector2Array( 18, 23, 43, 21, 41, 47, 20, 46 )
 
 [resource]
 0/name = "tilesheet_complete"

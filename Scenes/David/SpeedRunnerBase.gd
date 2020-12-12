@@ -13,9 +13,13 @@ func _ready():
 
 
 func move_direction():
-	var velocity = direction * walk_speed
-	velocity = move_and_slide(velocity)
-	direction = velocity.normalized()
+	if direction.length_squared() > 0:
+		direction = direction.normalized()
+		var velocity = direction * walk_speed
+		velocity = move_and_slide(velocity, Vector2(), false, 64)
+		direction = velocity.normalized()
+	else:
+		direction = Vector2()
 
 
 func animate():

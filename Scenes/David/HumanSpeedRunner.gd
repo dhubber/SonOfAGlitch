@@ -22,5 +22,3 @@ func player_input():
 	elif Input.is_action_pressed("right") and not Input.is_action_pressed("left"):
 		direction.x = 1
 
-	if direction.length_squared() > 0:
-		direction = direction.normalized()
