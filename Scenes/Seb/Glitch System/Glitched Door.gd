@@ -5,12 +5,14 @@ var collider : CollisionShape2D
 func _ready():
 	._ready()
 	collider = get_node("StaticBody2D/CollisionShape2D")
-	collider.disabled = true;
+	collider.disabled = true
 	
 func OnActivateGlitch():
 	if glitchActive: return
-	collider.disabled = false;
+	.OnActivateGlitch()
+	collider.disabled = false
 	
 func OnDeactivateGlitch():
 	if !glitchActive: return
-	collider.disabled = true;
+	.OnDeactivateGlitch()
+	collider.disabled = true
