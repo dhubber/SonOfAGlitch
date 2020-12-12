@@ -21,8 +21,7 @@ func _ready():
 	# get pipes
 	pipes_tilemap = get_node("../PipesTM")
 	print(pipes_tilemap.name)
-	in_pipes = true;
-	
+	in_pipes = true;	
 
 # Toggle pipes visibility
 func toggle_pipes():
@@ -31,9 +30,9 @@ func toggle_pipes():
 	if in_pipes:
 		pipes_tilemap.show()
 	else:
-		pipes_tilemap.hide()
-	
+		pipes_tilemap.hide()	
 
+#Check for movement input
 func get_movedir():
 	var LEFT = Input.is_action_pressed("move_left")
 	var RIGHT = Input.is_action_pressed("move_right")
@@ -46,7 +45,9 @@ func get_movedir():
 	if movedir.x !=0 && movedir.y != 0:
 		movedir = Vector2.ZERO		
 
+#Update funtion kinda
 func _process(delta):
+	
 	# Check if pipes were toggled
 	if Input.is_action_just_pressed("toggle_pipes"):
 		toggle_pipes()
@@ -55,15 +56,26 @@ func _process(delta):
 	if in_pipes:
 		position += speed * movedir * delta
 	
-	#if stuff went wrong and we moved more than the tile_size, 
-	#we will simply snap to the actual position
+		#if stuff went wrong and we moved more than the tile_size, 
+		#we will simply snap to the actual position
 		if position.distance_to(last_position) >= tile_size - speed * delta:
 			position = target_position
 	
-	# IDLE
+		# Only check for input when target_position was reached
 		if position == target_position:
-			get_movedir()
+			
 			last_position = position
-			target_position += movedir * tile_size
+			get_movedir()
+			
+			#check for collision
+			var temp = move_and_collide(movedir*tile_size)
+			#this needs to be set, otherwise move_and_collide sets position wrong
+			position = last_position
+			
+			#if no collision is detected, glitch moves
+			if not temp:
+				target_position += movedir * tile_size
+			else:
+				movedir = Vector2.ZERO
 	
 
