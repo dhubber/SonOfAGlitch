@@ -17,6 +17,8 @@ func _ready():
 	settings_button.connect("pressed", self, "_settings_pressed")
 	glitch_button.connect("pressed", self, "_glitch_pressed")
 	map_button.connect("pressed", self, "_map_pressed")
+	
+	glitch_button.disabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

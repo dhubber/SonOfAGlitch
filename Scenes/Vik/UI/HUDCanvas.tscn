@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Scenes/Vik/UI/Minimap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/UI/^Buttons/button_glitch.png" type="Texture" id=2]
-[ext_resource path="res://Assets/player.png" type="Texture" id=3]
+[ext_resource path="res://Assets/UI/^Buttons/button_glitch2.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Vik/UI/HUDCanvas.gd" type="Script" id=4]
 [ext_resource path="res://Assets/UI/^Buttons/button_settings.png" type="Texture" id=5]
 
@@ -10,33 +10,18 @@
 script = ExtResource( 4 )
 
 [node name="Map" parent="." instance=ExtResource( 1 )]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 player = NodePath("../../KinematicBody2D")
 
-[node name="GlitchButton" type="TextureButton" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -163.71
-margin_top = -164.654
-margin_right = 348.29
-margin_bottom = 347.346
-rect_scale = Vector2( 0.3, 0.3 )
-texture_normal = ExtResource( 2 )
-texture_disabled = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="SettingsButton" type="TextureButton" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -117.0
-margin_top = 10.0
-margin_right = 461.0
-margin_bottom = 554.0
+margin_left = -140.648
+margin_top = 18.409
+margin_right = 437.352
+margin_bottom = 562.409
 rect_scale = Vector2( 0.2, 0.2 )
 texture_normal = ExtResource( 5 )
 __meta__ = {
@@ -46,12 +31,28 @@ __meta__ = {
 [node name="MapButton" type="TextureButton" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -114.877
-margin_top = 126.214
-margin_right = 397.123
-margin_bottom = 638.214
+margin_left = -140.104
+margin_top = 140.509
+margin_right = 371.896
+margin_bottom = 652.509
 rect_scale = Vector2( 0.2, 0.2 )
 texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GlitchButton" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -159.0
+margin_top = -163.978
+margin_right = 353.0
+margin_bottom = 348.022
+rect_scale = Vector2( 0.25, 0.25 )
+texture_normal = ExtResource( 3 )
+texture_disabled = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
