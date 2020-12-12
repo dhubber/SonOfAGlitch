@@ -26,4 +26,4 @@ func update_player_input():
 
 	if direction.length_squared() > 0:
 		direction = direction.normalized()
-	print("Direction : ", direction)
+#	print("Direction : ", direction)

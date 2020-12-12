@@ -12,6 +12,6 @@ func _ready():
 func move_direction(direction):
 	var destination = global_position + 100 * direction
 	var velocity = direction * walk_speed
-	print("velocity : ", velocity)
+#	print("velocity : ", velocity)
 	look_at(destination)
 	move_and_slide(velocity)
