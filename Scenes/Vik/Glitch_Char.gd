@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 # PHYSICS
-var speed = 256
-var tile_size = 64
+var speed = 512
+var tile_size = 128
 var last_position = Vector2()
 var target_position = Vector2()
 var movedir = Vector2()
@@ -12,6 +12,7 @@ var pipes_tilemap
 var in_pipes 
 
 # VARIABLES
+var map_ui
 
 func _ready():
 	position = position.snapped(Vector2(tile_size/2,tile_size/2))
@@ -22,6 +23,8 @@ func _ready():
 	pipes_tilemap = get_node("../PipesTM")
 	print(pipes_tilemap.name)
 	in_pipes = true;	
+	map_ui = get_node("../HUD/Map")
+	map_ui.visible = false
 
 # Toggle pipes visibility
 func toggle_pipes():
@@ -33,8 +36,7 @@ func toggle_pipes():
 		pipes_tilemap.hide()	
 
 func toggle_map():
-	#TODO
-	pass
+	map_ui.visible = not map_ui.visible
 
 #Check for movement input
 func get_movedir():
