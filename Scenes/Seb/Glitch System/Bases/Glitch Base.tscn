@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/Seb/Glitch System/Glitch Area Effect Base.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Seb/Glitch System/Bases/Glitch Base.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Test Assets/Pills main character.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -37,11 +37,22 @@ margin_left = -4.83765
 margin_top = -7.33419
 margin_right = 35.1624
 margin_bottom = 32.6658
+mouse_filter = 1
 text = "5"
 fit_content_height = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Cooldown Timer" type="Timer" parent="."]
+pause_mode = 1
+one_shot = true
+
+[node name="Active Timer" type="Timer" parent="."]
+pause_mode = 1
+one_shot = true
 [connection signal="body_entered" from="." to="." method="OnRunnerEnter"]
 [connection signal="body_exited" from="." to="." method="OnRunnerExit"]
 [connection signal="pressed" from="TextureButton" to="." method="OnActivateGlitch"]
+[connection signal="timeout" from="Cooldown Timer" to="." method="OnCooldownComplete"]
+[connection signal="timeout" from="Active Timer" to="." method="OnDeactivateGlitch"]
