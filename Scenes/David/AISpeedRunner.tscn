@@ -6,6 +6,6 @@
 [node name="AISpeedRunner" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Timer" type="Timer" parent="." index="2"]
+[node name="TaskWaitTimer" type="Timer" parent="." index="2"]
 one_shot = true
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="TaskWaitTimer" to="." method="_on_Timer_timeout"]

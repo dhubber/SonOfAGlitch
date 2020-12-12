@@ -13,7 +13,7 @@ var path = []
 func _ready():
 	if level == null:
 		print("Could not find level!")
-	$Timer.start()
+	$TaskWaitTimer.start()
 
 
 func _physics_process(delta):
@@ -41,7 +41,7 @@ func navigate_to_destination():
 
 
 func task_complete():
-	$Timer.start()
+	$TaskWaitTimer.start()
 
 
 func _on_Timer_timeout():

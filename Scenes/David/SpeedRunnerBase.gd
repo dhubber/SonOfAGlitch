@@ -5,6 +5,7 @@ export var walk_speed = 200.0
 onready var animatedSprite = get_node("AnimatedSprite")
 
 var direction = Vector2()
+var speed_multiplier : float = 1.0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,7 +16,7 @@ func _ready():
 func move_direction():
 	if direction.length_squared() > 0:
 		direction = direction.normalized()
-		var velocity = direction * walk_speed
+		var velocity = direction * walk_speed * speed_multiplier
 		velocity = move_and_slide(velocity, Vector2(), false, 64)
 		direction = velocity.normalized()
 	else:
@@ -35,3 +36,12 @@ func animate():
 
 func task_complete():
 	pass
+
+
+func set_movement_speed_multiplier(new_speed_multiplier, effect_time):
+	speed_multiplier = new_speed_multiplier
+	$SpeedTimer.start(effect_time)
+
+
+func _on_SpeedTimer_timeout():
+	speed_multiplier = 1.0
