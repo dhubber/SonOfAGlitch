@@ -54,15 +54,15 @@ func _on_Timer_timeout():
 	find_next_task()
 
 
-func _unhandled_input(event):
-	if not event is InputEventMouseButton:
-		return
-	
-	if event.button_index != BUTTON_LEFT or not event.pressed:
-		return
-	
-	current_destination = event.global_position
-	if level.has_method("find_path_to_destination"):
-		path = level.find_path_to_destination(position, current_destination)
-		if path != null:
-			print("Found path : ",path)
+#func _unhandled_input(event):
+#	if not event is InputEventMouseButton:
+#		return
+#
+#	if event.button_index != BUTTON_LEFT or not event.pressed:
+#		return
+#
+#	current_destination = event.global_position
+#	if level.has_method("find_path_to_destination"):
+#		path = level.find_path_to_destination(position, current_destination)
+#		if path != null:
+#			print("Found path : ",path)
