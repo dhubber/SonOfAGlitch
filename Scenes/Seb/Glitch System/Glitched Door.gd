@@ -8,13 +8,11 @@ func _ready():
 	collider.disabled = true
 	
 func OnActivateGlitch():
-	if !.OnActivateGlitch(): return
-	
+	if glitchActive: return
+	.OnActivateGlitch()
 	collider.disabled = false
-	print("Door closed")
 	
 func OnDeactivateGlitch():
-	if !.OnDeactivateGlitch(): return
-	
+	if !glitchActive: return
+	.OnDeactivateGlitch()
 	collider.disabled = true
-	print("Door open")
