@@ -6,7 +6,6 @@ var inrangeRunners = []
 
 func OnSelectGlitch(body, things, boring, whatever): .OnSelectGlitch(body, things, boring, whatever)
 	
-	
 func OnDeselectGlitch(body, things, boring, whatever): .OnDeselectGlitch(body, things, boring, whatever)
 
 func OnActivateGlitch():
@@ -16,15 +15,19 @@ func OnActivateGlitch():
 #	Glitch all runners in range
 	for r in inrangeRunners:
 		GlitchRunner(r)
+	
+	return true
 
 
 func OnDeactivateGlitch():
-	if !glitchActive: return
+	if !glitchActive: return false
 	.OnDeactivateGlitch()
 	
 	#	Unglitch all runners in range
 	for r in affectedRunners:
 		UnglitchRunner(r)
+	
+	return true
 
 
 func OnRunnerEnter(body):

@@ -47,7 +47,7 @@ func OnDeselectGlitch(body, things, boring, whatever):
 
 #Executes the glitch
 func OnActivateGlitch():
-	if !cooldownTimer.is_stopped() || !activeTimer.is_stopped(): return
+	if !cooldownTimer.is_stopped() || !activeTimer.is_stopped(): return false
 
 #	Begin active countdown if the glitch is not single-shot
 	if activeTime == 0:
@@ -60,10 +60,11 @@ func OnActivateGlitch():
 		text.modulate.g = 0
 		text.modulate.b = 0
 		glitchActive = true
-		activeTimer.start(activeTime)
+		activeTimer.start(activeTime)		
+	return true
 		
 func OnDeactivateGlitch():
-	if !glitchActive: return
+	if !glitchActive: return false
 	
 	text.modulate.r = 0
 	text.modulate.g = 0
@@ -71,6 +72,8 @@ func OnDeactivateGlitch():
 	
 	glitchActive = false
 	cooldownTimer.start(cooldownTime)
+	return true
+
 
 func OnCooldownComplete():
 	print("Glitch ready!")
