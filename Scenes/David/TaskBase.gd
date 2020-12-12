@@ -2,6 +2,8 @@ extends Area2D
 
 
 var level = null
+var assigned_runner = null
+
 
 signal task_completed(task)
 
@@ -9,6 +11,14 @@ signal task_completed(task)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+
+
+func set_assigned_runner(runner):
+	assigned_runner = runner
+
+
+func is_assigned():
+	return assigned_runner != null
 
 
 func _on_TaskBase_body_entered(body):

@@ -38,10 +38,6 @@ func task_complete():
 	pass
 
 
-func set_movement_speed_multiplier(new_speed_multiplier, effect_time):
+func set_movement_speed_multiplier(new_speed_multiplier):
 	speed_multiplier = new_speed_multiplier
-	$SpeedTimer.start(effect_time)
 
-
-func _on_SpeedTimer_timeout():
-	speed_multiplier = 1.0
