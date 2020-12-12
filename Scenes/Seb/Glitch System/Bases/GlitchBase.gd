@@ -6,6 +6,7 @@ export var cooldownTime : float = 5
 
 #State
 var glitchActive : bool
+var glitchSelect : bool
 
 #References
 var text : RichTextLabel
@@ -19,16 +20,32 @@ func _ready():
 	activeTimer = get_node("Active Timer")
 
 
+#UnityMasterrace
 func _process(delta): Update()
 
-func Update():
-	if !activeTimer.is_stopped():
-#		Display active time temp
-		text.text = String(int(activeTimer.time_left))
-	elif !cooldownTimer.is_stopped():
-#		Display cooldown time temp
-		text.text = String(int(cooldownTimer.time_left))
 
+func Update():
+	
+#	Display timing
+	if !activeTimer.is_stopped():
+		text.text = String(ceil(activeTimer.time_left))
+	elif !cooldownTimer.is_stopped():
+		text.text = String(ceil(cooldownTimer.time_left))
+		
+	if glitchSelect && Input.is_action_just_pressed("execute_glitch"):
+		OnActivateGlitch()
+
+#Indicates the player is at the glitch location, priming the glitch for execution
+func OnSelectGlitch(body):
+	glitchSelect = true
+	print("Entered glitch" + name)
+	
+func OnDeselectGlitch(body): 
+	glitchSelect = false
+	print("Left glitch" + name)
+	
+
+#Executes the glitch
 func OnActivateGlitch():
 	if !cooldownTimer.is_stopped() || !activeTimer.is_stopped(): return
 
@@ -58,3 +75,4 @@ func OnDeactivateGlitch():
 func OnCooldownComplete():
 	print("Glitch ready!")
 	text.text = ""
+

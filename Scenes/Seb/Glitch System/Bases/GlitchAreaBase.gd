@@ -1,8 +1,13 @@
-extends "res://Scenes/Seb/Glitch System/Bases/Glitch Base.gd"
+extends "res://Scenes/Seb/Glitch System/Bases/GlitchBase.gd"
 
 
 var affectedRunners = []
 var inrangeRunners = []
+
+func OnSelectGlitch(body): .OnSelectGlitch(body)
+	
+	
+func OnDeselectGlitch(body): .OnDeselectGlitch(body)
 
 func OnActivateGlitch():
 	if glitchActive: return
@@ -45,3 +50,7 @@ func UnglitchRunner(runner):
 	print("Unglitching " + runner.name)
 	affectedRunners.erase(runner)
 	return
+
+
+func OnExitGlitch(area):
+	pass # Replace with function body.

@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/Seb/Glitch System/Bases/Glitch Base.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Seb/Glitch System/Bases/GlitchBase.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Test Assets/Pills main character.png" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 16.5114
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16.8645, 16.4196 )
 
 [node name="Glitch Base" type="Area2D"]
 position = Vector2( 41.4199, 17.0089 )
@@ -15,7 +15,7 @@ script = ExtResource( 1 )
 scale = Vector2( 0.032561, 0.032561 )
 texture = ExtResource( 2 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Speedrunner_CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="TextureButton" type="TextureButton" parent="."]
@@ -38,7 +38,6 @@ margin_top = -7.33419
 margin_right = 35.1624
 margin_bottom = 32.6658
 mouse_filter = 1
-text = "5"
 fit_content_height = true
 __meta__ = {
 "_edit_use_anchors_": false
