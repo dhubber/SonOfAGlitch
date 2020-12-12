@@ -1,31 +1,34 @@
 extends Node2D
 
 # Declare member variables here. Examples:
-export var glitchTime : float = 5
-var glitchActive : bool
-var glitchTimeRemaining : float
+export var cooldownTime : float = 5
+var cooldownTimeRemaining : float
+
+var text : RichTextLabel
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
-	
-
+	text = get_node("RichTextLabel")
 
 
 func _process(delta):
-	if glitchActive:
-		glitchTimeRemaining -= delta
-		if glitchTimeRemaining < 0:
-			DeactivateGlitch()
+	if cooldownTimeRemaining > 0:
+		cooldownTimeRemaining -= delta
+
+#		Display cooldown time temp
+		text.text = String(stepify(cooldownTimeRemaining,1))
+		
+		if cooldownTimeRemaining <= 0:
+			OnCooldownComplete()
 			
 			
 			
 func OnActivateGlitch():
-	if glitchActive: return
-	glitchActive = true
+	if cooldownTimeRemaining > 0: return
+	cooldownTimeRemaining = cooldownTime
+	print("Glitch activated!")
 
 
-func DeactivateGlitch():
-	if !glitchActive: return
-	glitchActive = false
+func OnCooldownComplete():
+	print("Glitch regened!")
+	text.text = ""

@@ -6,7 +6,8 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="Glitch Base" parent="." instance=ExtResource( 1 )]
-position = Vector2( 47.3128, 40.8612 )
+position = Vector2( 64, 64 )
+scale = Vector2( 1.92277, 1.92277 )
 
 [node name="HumanSpeedRunner" parent="." instance=ExtResource( 3 )]
 position = Vector2( 172, 198 )
