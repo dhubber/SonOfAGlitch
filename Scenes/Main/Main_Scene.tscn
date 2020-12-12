@@ -10,6 +10,7 @@
 [ext_resource path="res://Scenes/David/TaskBase.tscn" type="PackedScene" id=8]
 
 [node name="LevelBase" instance=ExtResource( 1 )]
+position = Vector2( 1, 0 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
 follow_viewport_scale = 100.0
@@ -42,7 +43,6 @@ position = Vector2( 465.686, -560.967 )
 
 [node name="GlitchChar" parent="." index="5" instance=ExtResource( 2 )]
 position = Vector2( 64, 64 )
-scale = Vector2( 2, 2 )
 
 [node name="HUD" parent="." index="6" instance=ExtResource( 5 )]
 
