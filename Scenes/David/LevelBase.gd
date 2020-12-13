@@ -34,8 +34,10 @@ func _ready():
 	$SpawnTimer.start(1.0)
 
 	names.shuffle()
-	
+
+
 func get_name(): return names.pop_front()
+
 
 func find_random_task():
 	if tasks.size() > 0:
@@ -43,6 +45,10 @@ func find_random_task():
 		var task = tasks[index]
 		tasks.remove(index)
 		assigned_tasks.push_back(task)
+		return task
+	elif assigned_tasks.size() > 0:
+		var index = randi() % assigned_tasks.size()
+		var task = assigned_tasks[index]
 		return task
 	else:
 		return null
@@ -89,11 +95,13 @@ func task_completed(task):
 
 
 func task_abandoned(task):
-	var index = assigned_tasks.find(task)
-	if index != -1:
-		assigned_tasks.remove(index)
-		tasks.push_back(task)
-		task.set_assigned_runner(null)
+	if task != null:
+		if task.is_assigned() == false:
+			var index = assigned_tasks.find(task)
+			if index != -1:
+				assigned_tasks.remove(index)
+				tasks.push_back(task)
+				#task.set_assigned_runner(null)
 
 
 func all_tasks_completed():

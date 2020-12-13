@@ -2,7 +2,7 @@ extends "res://Scenes/David/SpeedRunnerBase.gd"
 
 export var waypoint_tolerance : float = 5.0
 export var rage_increase_rate : float = 10.0
-export var rage_decrease_task : float = 6.0
+export var rage_decrease_task : float = 10.0
 
 onready var navigation2d : Navigation2D = get_tree().get_root().find_node("Navigation2D", true, false)
 onready var level = get_parent()
@@ -54,7 +54,7 @@ func find_next_task():
 		if level.has_method("find_random_task"):
 			assigned_task = level.find_random_task()
 			if assigned_task != null:
-				assigned_task.set_assigned_runner(self)
+				assigned_task.add_assigned_runner(self)
 				calculate_path()
 			else:
 				$TaskWaitTimer.start()
@@ -94,6 +94,7 @@ func rage_quit():
 	enraged = true
 	print("I've had enough!")
 	if assigned_task != null and level != null:
+		assigned_task.remove_assigned_runner(self)
 		level.task_abandoned(assigned_task)
 	emit_signal("runner_rage_quit", self)
 	queue_free()
