@@ -16,6 +16,7 @@ var assigned_tasks = []
 
 var no_runners = 0
 var no_quitters = 0
+var total_time : float = 0.0
 
 signal refresh_pathfinding
 
@@ -35,6 +36,12 @@ func _ready():
 
 	names.shuffle()
 
+
+func _process(delta):
+	total_time += delta
+	$GUI/Control/VBoxContainer/TaskLabel.text = "Tasks : " + str(tasks.size() + assigned_tasks.size())
+	$GUI/Control/VBoxContainer/RunnerLabel.text = "Workers : " + str(no_runners)
+	$GUI/Control/VBoxContainer/TimeLabel.text = "Time : " + str(int(total_time))
 
 func get_name(): return names.pop_front()
 
