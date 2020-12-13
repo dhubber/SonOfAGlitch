@@ -6,6 +6,7 @@ export var spawn_time : float = 5.0
 onready var navigation2d : Navigation2D = $Navigation2D
 onready var ai_runner = preload("res://Scenes/David/AISpeedRunner.tscn")
 
+
 var runners = []
 var spawn_points = []
 var names = ["pinkArmadillo", "sergamer", "ShyTeaSeb", "VChurchill", "the_artblob"]
@@ -14,6 +15,7 @@ var tasks = []
 var assigned_tasks = []
 
 var no_runners = 0
+var no_quitters = 0
 
 signal refresh_pathfinding
 
@@ -56,6 +58,7 @@ func spawn_runner():
 			runner.position = spawn_point.position
 			get_node("SpeedRunners").add_child(runner)
 			runner.set_level(self)
+			runner.connect("runner_rage_quit", self, "runner_quit")
 			if no_runners < max_no_runners:
 				$SpawnTimer.start(spawn_time)
 
@@ -95,6 +98,17 @@ func task_abandoned(task):
 
 func all_tasks_completed():
 	print("SpeedRun complete!")
+	$LevelChangeTimer.start()
+
+
+func runner_quit(runner):
+	no_quitters += 1
+	if no_quitters == max_no_runners:
+		all_runners_quit()
+
+
+func all_runners_quit():
+	print("All runners quit.  You win!")
 	$LevelChangeTimer.start()
 
 

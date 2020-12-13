@@ -1,18 +1,24 @@
 extends "res://Scenes/David/SpeedRunnerBase.gd"
 
 export var waypoint_tolerance : float = 5.0
+export var rage_increase_rate : float = 10.0
+export var rage_decrease_task : float = 6.0
 
 onready var navigation2d : Navigation2D = get_tree().get_root().find_node("Navigation2D", true, false)
 onready var level = get_parent()
 onready var nameLabel := $RichTextLabel
 
+signal runner_rage_quit(runner)
+
 var current_destination = Vector2()
 var assigned_task = null
 var path = []
+var rage_value : float = 0.0
+var enraged : bool = false
 
 
 func _ready():
-	pass
+	$ProgressBar.value = 0.0
 
 
 func set_level(new_level):
@@ -22,15 +28,23 @@ func set_level(new_level):
 	level.connect("refresh_pathfinding",self,"calculate_path")
 	$TaskWaitTimer.start()
 
-#	Assign name
+	# Assign name
 	nameLabel.bbcode_text = "[center]" + level.get_name() + "[/center]"
 
+
 func _physics_process(delta):
-	navigate_to_destination()
-	animate()
+	rage_value += rage_increase_rate * delta
+	$ProgressBar.value = rage_value
+	if rage_value >= 100.0:
+		if enraged == false:
+			rage_quit()
+	else:
+		if enraged == false:
+			navigate_to_destination()
+			animate()
 	
 	
-#Ensure lines are always drawn in world space. It ain't elegant
+# Ensure lines are always drawn in world space. It ain't elegant
 func _process(delta):
 	$Line2D.transform.origin = -position
 
@@ -44,6 +58,7 @@ func find_next_task():
 				calculate_path()
 			else:
 				$TaskWaitTimer.start()
+
 
 func calculate_path():
 #	Try and make sure a task is assigned, otherwise return
@@ -71,22 +86,18 @@ func navigate_to_destination():
 
 func task_complete():
 	assigned_task = null
+	rage_value = clamp(rage_value - rage_decrease_task, 0.0, 100.0)
 	$TaskWaitTimer.start()
+
+
+func rage_quit():
+	enraged = true
+	print("I've had enough!")
+	if assigned_task != null and level != null:
+		level.task_abandoned(assigned_task)
+	emit_signal("runner_rage_quit", self)
+	queue_free()
 
 
 func _on_Timer_timeout():
 	find_next_task()
-
-
-#func _unhandled_input(event):
-#	if not event is InputEventMouseButton:
-#		return
-#
-#	if event.button_index != BUTTON_LEFT or not event.pressed:
-#		return
-#
-#	current_destination = event.global_position
-#	if level.has_method("find_path_to_destination"):
-#		path = level.find_path_to_destination(position, current_destination)
-#		if path != null:
-#			print("Found path : ",path)
