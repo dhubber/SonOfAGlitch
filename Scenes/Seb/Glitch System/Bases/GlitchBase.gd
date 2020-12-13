@@ -17,6 +17,7 @@ onready var level = get_tree().get_root().get_node("LevelBase")
 onready var hud = get_tree().get_root().get_node("LevelBase/HUD")
 onready var selectParticles := $CPUParticles2D
 onready var accessParticles := find_node("AccessParticles")
+onready var glitchChar := get_tree().get_root().find_node("GlitchChar", true, false)
 
 
 func _ready():
@@ -48,11 +49,13 @@ func OnSelectGlitch(body, things, boring, whatever):
 	glitchSelect = true
 	hud._enable_glitch()
 	print("Entered glitch" + name)
+	glitchChar.set_pipes(false)
 	
 func OnDeselectGlitch(body, things, boring, whatever): 
 	glitchSelect = false
 	hud._disable_glitch()
 	print("Left glitch" + name)
+	glitchChar.set_pipes(true)
 	
 
 #Executes the glitch
