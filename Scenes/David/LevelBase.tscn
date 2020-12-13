@@ -22,7 +22,15 @@ format = 1
 
 [node name="Tasks" type="Node" parent="."]
 
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="SpeedRunners" type="Node" parent="."]
+
 [node name="LevelChangeTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="SpawnTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="timeout" from="LevelChangeTimer" to="." method="game_over"]
+[connection signal="timeout" from="SpawnTimer" to="." method="spawn_runner"]

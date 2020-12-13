@@ -11,6 +11,11 @@ var path = []
 
 
 func _ready():
+	pass
+
+
+func set_level(new_level):
+	level = new_level
 	if level == null:
 		print("Could not find level!")
 	level.connect("refresh_pathfinding",self,"calculate_path")
@@ -20,6 +25,7 @@ func _ready():
 func _physics_process(delta):
 	navigate_to_destination()
 	animate()
+	
 	
 #Ensure lines are always drawn in world space. It ain't elegant
 func _process(delta):
