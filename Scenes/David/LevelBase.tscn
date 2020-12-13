@@ -34,6 +34,8 @@ one_shot = true
 one_shot = true
 
 [node name="GUI" type="CanvasLayer" parent="."]
+scale = Vector2( 2, 2 )
+transform = Transform2D( 2, 0, 0, 2, 0, 0 )
 
 [node name="Control" type="Control" parent="GUI"]
 anchor_right = 1.0
