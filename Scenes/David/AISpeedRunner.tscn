@@ -49,4 +49,26 @@ z_as_relative = false
 width = 3.0
 end_cap_mode = 2
 antialiased = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = -87.0
+margin_top = -71.1543
+margin_right = 86.0
+margin_bottom = -55.1543
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Seb[/center]"
+text = "Seb"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+margin_left = -58.1814
+margin_top = -52.9548
+margin_right = 57.8186
+margin_bottom = -38.9548
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="TaskWaitTimer" to="." method="_on_Timer_timeout"]

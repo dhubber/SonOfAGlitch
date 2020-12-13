@@ -4,12 +4,10 @@ extends "res://Scenes/Seb/Glitch System/Bases/GlitchBase.gd"
 #References
 var affectedRunners = []
 var inrangeRunners = []
-var sprite : Sprite
 
 
 func _ready():
 	._ready()
-	sprite = get_node("Sprite")
 
 func OnSelectGlitch(body, things, boring, whatever):
 	.OnSelectGlitch(body, things, boring, whatever)
@@ -25,13 +23,10 @@ func OnActivateGlitch():
 	for r in inrangeRunners:
 		GlitchRunner(r)
 
-var time : float
+
 func Update(delta):
 	.Update(delta)
-	time += time
-	if activeTimer.is_stopped() && cooldownTimer.is_stopped() && glitchSelect:
-		sprite.modulate.a = cos(time)
-	else : sprite.modulate.a = 0.0
+
 
 func OnDeactivateGlitch():
 	if !glitchActive: return
