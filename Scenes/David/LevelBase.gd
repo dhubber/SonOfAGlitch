@@ -5,6 +5,8 @@ onready var navigation2d : Navigation2D = $Navigation2D
 var tasks = []
 var assigned_tasks = []
 
+signal refresh_pathfinding
+
 
 func _ready():
 	randomize()
@@ -24,6 +26,9 @@ func find_random_task():
 	else:
 		return null
 
+func refresh_pathfinding():
+	print("Forcing pathfinding to refresh")
+	emit_signal("refresh_pathfinding")
 
 func find_path_to_destination(current_position, destination):
 	if navigation2d != null:

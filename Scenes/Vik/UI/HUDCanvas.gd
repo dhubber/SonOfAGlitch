@@ -33,3 +33,9 @@ func _glitch_pressed():
 func _map_pressed():
 	print("Map pressed")
 	map.visible = not map.visible
+	
+func _enable_glitch():
+	glitch_button.disabled = false
+	
+func _disable_glitch():
+	glitch_button.disabled = true

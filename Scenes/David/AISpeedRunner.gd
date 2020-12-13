@@ -13,6 +13,7 @@ var path = []
 func _ready():
 	if level == null:
 		print("Could not find level!")
+	level.connect("refresh_pathfinding",self,"calculate_path")
 	$TaskWaitTimer.start()
 
 
@@ -27,11 +28,18 @@ func find_next_task():
 			assigned_task = level.find_random_task()
 			if assigned_task != null:
 				assigned_task.set_assigned_runner(self)
-				path = level.find_path_to_destination(position, assigned_task.position)
-				if path != null:
-					print("Found path : ",path)
+				calculate_path()
 			else:
 				$TaskWaitTimer.start()
+
+func calculate_path():
+#	Try and make sure a task is assigned, otherwise return
+	if assigned_task == null: find_next_task()
+	if assigned_task == null: return
+	
+	path = level.find_path_to_destination(position, assigned_task.position)
+	if path != null:
+		print("Found path : ", path)
 
 
 func navigate_to_destination():

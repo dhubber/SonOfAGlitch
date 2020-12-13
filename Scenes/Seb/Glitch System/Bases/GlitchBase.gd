@@ -12,6 +12,8 @@ var glitchSelect : bool
 var text : RichTextLabel
 var cooldownTimer : Timer
 var activeTimer : Timer
+onready var level = get_tree().get_root().get_node("LevelBase")
+onready var hud = get_tree().get_root().get_node("LevelBase/HUD")
 
 
 func _ready():
@@ -38,10 +40,12 @@ func Update(delta):
 #Indicates the player is at the glitch location, priming the glitch for execution
 func OnSelectGlitch(body, things, boring, whatever):
 	glitchSelect = true
+	hud._enable_glitch()
 	print("Entered glitch" + name)
 	
 func OnDeselectGlitch(body, things, boring, whatever): 
 	glitchSelect = false
+	hud._disable_glitch()
 	print("Left glitch" + name)
 	
 

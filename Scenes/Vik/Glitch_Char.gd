@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 # PHYSICS
-var speed = 512
+export var speed = 512
 var tile_size = 128
 var last_position = Vector2()
 var target_position = Vector2()
