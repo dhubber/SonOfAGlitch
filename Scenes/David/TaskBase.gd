@@ -3,6 +3,8 @@ extends Area2D
 
 var level = null
 var assigned_runner = null
+onready var active_sprite := $SpriteOn
+onready var done_sprite := $SpriteOff
 
 
 signal task_completed(task)
@@ -10,7 +12,7 @@ signal task_completed(task)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	done_sprite.hide()
 
 
 func set_assigned_runner(runner):
@@ -30,4 +32,5 @@ func _on_TaskBase_body_entered(body):
 		if body.has_method("task_complete"):
 			body.task_complete()
 		emit_signal("task_completed", self)
-		queue_free()
+		active_sprite.hide()
+		done_sprite.show()
