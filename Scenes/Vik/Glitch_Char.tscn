@@ -53,6 +53,7 @@ shape = SubResource( 2 )
 scale = Vector2( 0.2, 0.2 )
 z_index = 452
 frames = SubResource( 3 )
+frame = 6
 playing = true
 
 [node name="CPUParticles2D" parent="." instance=ExtResource( 7 )]
