@@ -140,7 +140,6 @@ position = Vector2( 465.686, -560.967 )
 
 [node name="GlitchChar" parent="." index="5" instance=ExtResource( 2 )]
 position = Vector2( 64, 64 )
-speed = 1500
 
 [node name="HUD" parent="." index="6" instance=ExtResource( 5 )]
 
