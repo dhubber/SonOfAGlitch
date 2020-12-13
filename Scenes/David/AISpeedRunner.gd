@@ -7,6 +7,7 @@ export var rage_decrease_task : float = 10.0
 onready var navigation2d : Navigation2D = get_tree().get_root().find_node("Navigation2D", true, false)
 onready var level = get_parent()
 onready var nameLabel := $RichTextLabel
+onready var line2D := $Line2D
 
 signal runner_rage_quit(runner)
 
@@ -46,7 +47,9 @@ func _physics_process(delta):
 	
 # Ensure lines are always drawn in world space. It ain't elegant
 func _process(delta):
-	$Line2D.transform.origin = -position
+	line2D.transform.origin = -position
+	if path.size() != 0:
+		line2D.points = path
 
 
 func find_next_task():
@@ -70,7 +73,7 @@ func calculate_path():
 		print("Found path : ", path)
 
 #		Draw new path
-		$Line2D.points = path
+		line2D.points = path
 
 
 func navigate_to_destination():

@@ -6,6 +6,7 @@ var affectedRunners = []
 var inrangeRunners = []
 
 
+
 func _ready():
 	._ready()
 
@@ -42,6 +43,8 @@ func OnRunnerEnter(body):
 	
 	if (glitchActive):
 		GlitchRunner(body)
+		
+	glitchChar.toggle_pipes()
 	
 	print("Enter" + body.name)
 
@@ -49,6 +52,7 @@ func OnRunnerEnter(body):
 func OnRunnerExit(body):
 	inrangeRunners.erase(body)
 	print("Exit" + body.name)
+	glitchChar.toggle_pipes()
 
 
 func GlitchRunner(runner):

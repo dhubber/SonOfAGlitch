@@ -9,7 +9,6 @@ extents = Vector2( 64, 64 )
 [node name="Glitched Door" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 activeTime = 5.0
-cooldownTime = 5.0
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="4"]
 collision_layer = 2
