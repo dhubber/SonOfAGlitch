@@ -36,7 +36,7 @@ func _exit_pressed():
 	get_tree().quit()
 
 func _credits_pressed():
-	print("Credits pressed")
+	get_tree().change_scene("res://Scenes/Main/Credits.tscn")
 	
 func _about_pressed():
-	print("Credits pressed")
+	get_tree().change_scene("res://Scenes/Main/About.tscn")
