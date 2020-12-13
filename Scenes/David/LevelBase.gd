@@ -8,8 +8,6 @@ onready var ai_runner = preload("res://Scenes/David/AISpeedRunner.tscn")
 
 var runners = []
 var spawn_points = []
-var names = ["pinkArmadillo", "sergamer", "ShyTeaSeb", "VChurchill", "the_artblob"]
-
 var tasks = []
 var assigned_tasks = []
 
@@ -31,9 +29,6 @@ func _ready():
 	
 	$SpawnTimer.start(1.0)
 
-	names.shuffle()
-	
-func get_name(): return names.pop_front()
 
 func find_random_task():
 	if tasks.size() > 0:

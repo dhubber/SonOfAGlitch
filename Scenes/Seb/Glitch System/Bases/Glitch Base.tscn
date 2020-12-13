@@ -1,11 +1,15 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Seb/Glitch System/Bases/GlitchBase.gd" type="Script" id=1]
-[ext_resource path="res://Assets/Delet Particles.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Test Assets/Pills main character.png" type="Texture" id=2]
 
 [node name="Glitch Base" type="Node2D"]
 position = Vector2( 41.4199, 17.0089 )
 script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.032561, 0.032561 )
+texture = ExtResource( 2 )
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 modulate = Color( 0, 0, 0, 1 )
@@ -26,7 +30,5 @@ one_shot = true
 [node name="Active Timer" type="Timer" parent="."]
 pause_mode = 1
 one_shot = true
-
-[node name="CPUParticles2D" parent="." instance=ExtResource( 2 )]
 [connection signal="timeout" from="Cooldown Timer" to="." method="OnCooldownComplete"]
 [connection signal="timeout" from="Active Timer" to="." method="OnDeactivateGlitch"]

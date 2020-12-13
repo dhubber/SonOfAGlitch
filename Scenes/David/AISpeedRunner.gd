@@ -4,7 +4,6 @@ export var waypoint_tolerance : float = 5.0
 
 onready var navigation2d : Navigation2D = get_tree().get_root().find_node("Navigation2D", true, false)
 onready var level = get_parent()
-onready var nameLabel := $RichTextLabel
 
 var current_destination = Vector2()
 var assigned_task = null
@@ -22,8 +21,6 @@ func set_level(new_level):
 	level.connect("refresh_pathfinding",self,"calculate_path")
 	$TaskWaitTimer.start()
 
-#	Assign name
-	nameLabel.bbcode_text = "[center]" + level.get_name() + "[/center]"
 
 func _physics_process(delta):
 	navigate_to_destination()

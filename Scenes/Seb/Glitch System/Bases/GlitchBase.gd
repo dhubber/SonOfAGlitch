@@ -7,7 +7,6 @@ export var cooldownTime : float = 5
 #State
 var glitchActive : bool
 var glitchSelect : bool
-var time : float
 
 #References
 var text : RichTextLabel
@@ -15,8 +14,6 @@ var cooldownTimer : Timer
 var activeTimer : Timer
 onready var level = get_tree().get_root().get_node("LevelBase")
 onready var hud = get_tree().get_root().get_node("LevelBase/HUD")
-onready var selectParticles := $CPUParticles2D
-onready var accessParticles := find_node("AccessParticles")
 
 
 func _ready():
@@ -30,7 +27,6 @@ func _process(delta): Update(delta)
 
 
 func Update(delta):
-	time += time
 	
 #	Display timing
 	if !activeTimer.is_stopped():
@@ -40,8 +36,6 @@ func Update(delta):
 		
 	if glitchSelect && Input.is_action_just_pressed("execute_glitch"):
 		OnActivateGlitch()
-		
-	selectParticles.emitting = activeTimer.is_stopped() && cooldownTimer.is_stopped() && glitchSelect
 
 #Indicates the player is at the glitch location, priming the glitch for execution
 func OnSelectGlitch(body, things, boring, whatever):
@@ -72,8 +66,6 @@ func OnActivateGlitch():
 		glitchActive = true
 		activeTimer.start(activeTime)
 		
-		accessParticles.emitting = false;
-		
 func OnDeactivateGlitch():
 	if !glitchActive: return
 	
@@ -87,5 +79,4 @@ func OnDeactivateGlitch():
 func OnCooldownComplete():
 	print("Glitch ready!")
 	text.text = ""
-	accessParticles.emitting = true;
 
