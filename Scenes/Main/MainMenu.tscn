@@ -36,7 +36,7 @@ __meta__ = {
 [node name="ParallaxBackground" type="ParallaxBackground" parent="MarginContainer"]
 
 [node name="Sprite" type="Sprite" parent="MarginContainer/ParallaxBackground"]
-position = Vector2( 1024, 1024 )
+position = Vector2( 1027.56, 1024 )
 texture = ExtResource( 4 )
 
 [node name="HSplitContainer" type="HSplitContainer" parent="MarginContainer"]

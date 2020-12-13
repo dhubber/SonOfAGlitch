@@ -36,8 +36,9 @@ bg_color = Color( 1, 1, 1, 1 )
 "SpeedRunner",
 ]]
 script = ExtResource( 2 )
-walk_speed = 125.0
-rage_increase_rate = 3.0
+walk_speed = 250.0
+rage_increase_rate = 3.5
+rage_decrease_task = 30.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -41.662 )

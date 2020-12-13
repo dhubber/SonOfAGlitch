@@ -4,25 +4,26 @@
 
 [node name="Control" instance=ExtResource( 1 )]
 
-[node name="VBoxContainer" parent="MarginContainer" index="0"]
-margin_right = 1072.0
-
 [node name="Label" parent="MarginContainer/VBoxContainer" index="0"]
-margin_top = 216.0
-margin_right = 1072.0
-margin_bottom = 247.0
+margin_top = 173.0
+margin_bottom = 204.0
 text = "About
 "
 
 [node name="Label2" parent="MarginContainer/VBoxContainer" index="1"]
-margin_top = 251.0
-margin_right = 1072.0
-margin_bottom = 384.0
+margin_top = 208.0
+margin_bottom = 426.0
 text = "This game was created over the course of a weekend during the SemesterGameJam.
 
 You play as a glitch, in a popular space-themed social-deception game.
-Navigate to the multi-color glitches via pipes using the arrow keys. Once in a glitch, press space to glitch out adjacent tiles, forcing the poor players to find a new route.
+
+Navigate to the multi-color glitches via pipes using the arrow keys.
+
+Once in a glitch, press space to glitch out adjacent tiles, forcing the poor players to find a new route.
+
 Preventing a player from completing their task until the rage bar above their head fills up, will cause them to rage-quit.
+
 If all players rage-quit, you win! However, if they successfully complete their tasks, it's game over.
+
 Good luck!"
 autowrap = true

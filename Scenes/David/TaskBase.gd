@@ -4,8 +4,8 @@ extends Area2D
 #var assigned_runner = null
 var assigned_runners = []
 
-onready var done_sprite := $SpriteOff
 onready var active_sprite := $SpriteOff
+onready var done_sprite := $SpriteOff
 
 
 signal task_completed(task)

@@ -34,7 +34,6 @@ func _ready():
 	
 	$SpawnTimer.start(1.0)
 
-	names.shuffle()
 
 
 func _process(delta):
@@ -43,7 +42,9 @@ func _process(delta):
 	$GUI/Control/VBoxContainer/RunnerLabel.text = "Workers : " + str(no_runners)
 	$GUI/Control/VBoxContainer/TimeLabel.text = "Time : " + str(int(total_time))
 
-func get_name(): return names.pop_front()
+func get_name(): 
+	names.shuffle()
+	return names[0]
 
 
 func find_random_task():
