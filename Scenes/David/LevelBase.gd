@@ -33,7 +33,7 @@ func refresh_pathfinding():
 func find_path_to_destination(current_position, destination):
 	if navigation2d != null:
 		print("Finding path : ", current_position, destination)
-		var path = navigation2d.get_simple_path(current_position, destination)
+		var path = navigation2d.get_simple_path(current_position, destination, false)
 		return path
 	else:
 		return PoolVector2Array()
