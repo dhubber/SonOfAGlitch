@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Vik/Glitch_Char.gd" type="Script" id=1]
 [ext_resource path="res://Assets/player.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Assets/GlitchChar/glitch_0001_3-copy.png" type="Texture" id=9]
 [ext_resource path="res://Assets/GlitchChar/glitch_0002_2-copy.png" type="Texture" id=10]
 [ext_resource path="res://Assets/GlitchChar/glitch_0003_1-copy.png" type="Texture" id=11]
+[ext_resource path="res://Assets/light.png" type="Texture" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 47.9947
@@ -61,3 +62,8 @@ playing = true
 scale = Vector2( 7, 7 )
 local_coords = false
 scale_amount = 5.26
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 12 )
+color = Color( 0, 0.952941, 1, 1 )
+shadow_enabled = true

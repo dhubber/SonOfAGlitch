@@ -4,8 +4,10 @@ extends Area2D
 #var assigned_runner = null
 var assigned_runners = []
 
-onready var active_sprite := $SpriteOff
-onready var done_sprite := $SpriteOff
+onready var sprite_off := $SpriteOff
+onready var sprite_on := $SpriteOn
+onready var light_on := $LightOn
+onready var light_off := $LightOff
 
 
 signal task_completed(task)
@@ -13,7 +15,8 @@ signal task_completed(task)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	done_sprite.hide()
+	sprite_on.hide()
+	light_on.enabled = false
 
 
 func add_assigned_runner(runner):
@@ -42,5 +45,7 @@ func _on_TaskBase_body_entered(body):
 			runner.task_complete()
 		assigned_runners.empty()
 		emit_signal("task_completed", self)
-		active_sprite.hide()
-		done_sprite.show()
+		sprite_on.hide()
+		sprite_off.show()
+		light_on.enabled = true
+		light_off.enabled = true

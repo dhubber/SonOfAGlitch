@@ -11,3 +11,9 @@ texture = ExtResource( 2 )
 
 [node name="SpriteOff" parent="." index="2"]
 texture = ExtResource( 3 )
+
+[node name="LightOn" parent="." index="3"]
+shadow_enabled = true
+
+[node name="LightOff" parent="." index="4"]
+shadow_enabled = true

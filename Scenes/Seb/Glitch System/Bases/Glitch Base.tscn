@@ -29,5 +29,6 @@ pause_mode = 1
 one_shot = true
 
 [node name="CPUParticles2D" parent="." instance=ExtResource( 2 )]
+light_mask = 1
 [connection signal="timeout" from="Cooldown Timer" to="." method="OnCooldownComplete"]
 [connection signal="timeout" from="Active Timer" to="." method="OnDeactivateGlitch"]

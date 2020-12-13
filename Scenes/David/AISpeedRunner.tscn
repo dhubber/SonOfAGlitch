@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Assets/character/char_1_walk_0003_03_walk.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/David/AISpeedRunner.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Assets/character/char_1_walk_0001_05_walk.png" type="Texture" id=6]
 [ext_resource path="res://Assets/character/char_1_walk_0005_01_walk.png" type="Texture" id=7]
 [ext_resource path="res://Assets/character/char_1_walk_0006_00_idle.png" type="Texture" id=8]
+[ext_resource path="res://Assets/light.png" type="Texture" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -86,4 +87,9 @@ value = 20.03
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 9 )
+mode = 2
+shadow_enabled = true
 [connection signal="timeout" from="TaskWaitTimer" to="." method="_on_Timer_timeout"]
