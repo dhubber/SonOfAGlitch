@@ -41,4 +41,11 @@ shape = SubResource( 2 )
 
 [node name="TaskWaitTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Line2D" type="Line2D" parent="."]
+show_behind_parent = true
+z_index = -2
+width = 3.0
+end_cap_mode = 2
+antialiased = true
 [connection signal="timeout" from="TaskWaitTimer" to="." method="_on_Timer_timeout"]

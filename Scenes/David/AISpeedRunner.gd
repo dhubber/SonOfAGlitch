@@ -20,6 +20,10 @@ func _ready():
 func _physics_process(delta):
 	navigate_to_destination()
 	animate()
+	
+#Ensure lines are always drawn in world space. It ain't elegant
+func _process(delta):
+	$Line2D.transform.origin = -position
 
 
 func find_next_task():
@@ -40,6 +44,9 @@ func calculate_path():
 	path = level.find_path_to_destination(position, assigned_task.position)
 	if path != null:
 		print("Found path : ", path)
+
+#		Draw new path
+		$Line2D.points = path
 
 
 func navigate_to_destination():
